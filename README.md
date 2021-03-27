@@ -58,8 +58,8 @@ The files in this repo are designed as modular classes that can be imported into
 In your VSCode terminal, start the Node shell by typing `node`. (Make sure you're in the repository directory.) Now let's import some classes and instances from `index.js` and `script.js`. Paste these two lines into your running Node shell:
 
 ```bash
-const { Animal, Dog, Cat, Pig, Sheep, Chicken, Bull } = require('./index')
-const { Monique, Spike, Leo, Lawrence, Laura, Sal, Perry, Tina, Pia, Tim, animals } = require('./script')
+const { Animal, Dog, Cat, Pig, Sheep, Chicken, Bull } = require('./classes.js')
+const { Monique, Spike, Leo, Lawrence, Laura, Sal, Perry, Tina, Pia, Tim, animals } = require('./instances.js')
 ```
 
 Now all of the above variables should be available to you in your Node shell. Type `animals` and you should see all of the current animals listed in an array. Type an animal's name and you should be able to access the individual object. Now do some stuff!

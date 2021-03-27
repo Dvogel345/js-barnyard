@@ -1,4 +1,4 @@
-const { Animal, Dog, Cat, Pig, Sheep, Chicken, Bull } = require('./index')
+const { Animal, Dog, Cat, Pig, Sheep, Chicken, Bull } = require('./classes')
 const Monique = new Sheep({name: "Monique", color: "grey"})
 const Spike = new Dog({name: "Spike", color: "spotted", stuffInBelly: ['garbage','dog food']})
 const Leo = new Cat({name: "Leo", color: "tortoiseshell"})
