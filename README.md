@@ -76,3 +76,78 @@ Create a new subclass of `Animal` in a new file in the `species` directory. Make
 ## Nice work!
 
 If you're comfortable here, then you know slightly _more_ than you need to know about JS OOP in order to get started with React. Great!
+
+## For Teachers and Students: Additional Study Questions
+
+To dig in deeper, start with these study questions. Try to find your own explanation and compare ideas with a peer before revealing the answer!
+
+<details>
+<summary>
+1) What's going on in script.js?
+</summary>
+
+**Line 1:** The `Animal` class and a number of child classes are imported from `index.js` via `require`. (They are actually imported into _that_ file from their individual sources.)
+
+**Lines 2 - 11:** The imported classes are used to create new _instances_ of the various imported classes, and each of these is stored as a variable with the same name as the critter.
+
+**Line 12:** Each of the above instances is placed into a new array. (Note: This will place a _reference_ to the original object in the array. `Monique` and `animals[0]` will now both point to the same object.)
+
+**Line 13:** The individual created instances and the array are _exported_ from this file, meaning other files can access them via `require`.
+
+</details>
+
+<details>
+<summary>
+2) What happens when an Animal eats?
+</summary>
+
+The `.eat(food)` method of the `Animal` class follows the folowwing steps:
+
+1) Invokes `this.isHungry()`, which returns a boolean based on whether the animal has fewer than 4 items in the `this.stuffInBelly` array.
+
+2) If the above returns `true`, the `food` argument is placed in `this.stuffInBelly` using `.push`. (This is true regardless of what datatype is provided for `food`! :grimacing: ) The animals name and food eaten are logged to the console.
+
+3) If the animal is not hungry, the animal's name is logged to the console along with a message saying it doesn't want to eat.
+</details>
+
+<details>
+<summary> 
+3) What is the .toString() method? Is it used anywhere?
+</summary>
+
+The `Animal` class' `.toString()` method simply returns a string with the instance's `name` property along with `this.constructor.name`, which will be the name of the instance's class. (If a child class `extends` the `Animal` class, that child class' name will be provided here.)
+
+`.toString()` is not _directly_ used in any of this code -- but he method is invoked any time an object is directly converted to a string, as in a literal with backticks and `${}`. This can be seen in the `makeFriends()` method:
+
+```javascript
+console.log(`${this} and ${newFriend} are now friends!`)
+// produces output like "Pia the Chicken and Spike the Dog are now friends!"
+```
+
+If you comment out the `.toString()` method in `Animal`, re-import the objects, and direct two animals to make friends, you will see this instead:
+```bash
+[object Object] and [object Object] are now friends!
+```
+
+(Note: Many datatypes -- `Number`, `Array`, `Object` and more -- actually have a default `.toString()` method that is invoked in the same situations!)
+
+</details>
+
+<details>
+<summary>
+4) What happens if Lawrence and Pia become friends?
+</summary>
+
+Supposing this means we have entered `Lawrence.makeFriends(Pia)` into the REPL, `Lawrence` is an instance of `Cat` and `Pia` is an instance of `Chicken`, both of which inherit from `Animal`.
+
+The `.makeFriends(newFriend)` method of the `Lawrence` object will be invoked. For the `Cat` class, this method is inherited from `Animal`, so the code for the method can be found in `Animal.js`.
+
+This method first checks whether the `newFriend` argument is an instance of `Animal` or a child class of `Animal` by checking `newFriend.constructor` and `newFriend.__proto__.__proto__.constructor`, which returns the parent class. So no, in this system, an `Animal` cannot be friends with `25` or `"a paper bag"`, only with another `Animal`.
+
+Then the method checks whether the two instances are already friends by determining whether a reference to `newFriend` is found in the `this.friends` array.
+
+If the two conditions are met, a reference to `newFriend` is added to `this.friends` -- and a reference to `this` (which will be the current object, in this case `Lawrence`) will be added to `newFriend.friends`. Then an announcement of the new friendship is logged.
+
+If the conditions _aren't_ met, the method checks why. If `this.friends.includes(newFriend)`, then the log explains that the animals are already pals. Otherwise, the method must have failed because of `newFriend`'s type -- the log explains that the animal cannot be friends with a `newFriend.constructor.name`, which will output `newFriend`'s type!
+
+
