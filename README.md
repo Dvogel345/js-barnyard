@@ -55,7 +55,7 @@ You can use either method for general JS OOP, but get used to seeing `props` in 
 The files in this repo are designed as modular classes that can be imported into a Node environment. `Animal` is the parent class, and child classes are contained in the `species` directory. Clone this repo and click around in VSCode -- look for at least one example of each concept mentioned above, and try to wrap your head around it.
 
 ### 2. Fire it up and play in the barnyard
-In your VSCode terminal, start the Node shell by typing `node`. (Make sure you're in the repository directory.) Now let's import some classes and instances from `index.js` and `script.js`. Paste these two lines into your running Node shell:
+In your VSCode terminal, start the Node shell by typing `node`. (Make sure you're in the repository directory.) Now let's import some classes and instances from `classes.js` and `instances.js`. Paste these two lines into your running Node shell:
 
 ```bash
 const { Animal, Dog, Cat, Pig, Sheep, Chicken, Bull } = require('./classes.js')
@@ -64,7 +64,7 @@ const { Monique, Spike, Leo, Lawrence, Laura, Sal, Perry, Tina, Pia, Tim, animal
 
 Now all of the above variables should be available to you in your Node shell. Type `animals` and you should see all of the current animals listed in an array. Type an animal's name and you should be able to access the individual object. Now do some stuff!
 
-* Make a new animal instance of whatever type you like. (Check `script.js` for hints.)
+* Make a new animal instance of whatever type you like. (Check `instances.js` for hints.)
 * Look at the methods defined for `Animal` and for each subclass. Make the animals do stuff! Wallow! Eat! Charge! Make friends! Try stuff! Can Laura eat `'a paper bag'`? Can Perry charge `'a truck'`? Can Leo fetch `'the paper'`? Can Spike make friends with `'a fence'`? Can Lawrence eat Pia??? Zoiks!
 * Spike is a very friendly dog. Have him try to make friends with everybody: `animals.forEach(animal => Spike.makeFriends(animal))`
 * Perry is a very angry bull. Have him try to `charge` everybody by altering the code above.
@@ -83,10 +83,10 @@ To dig in deeper, start with these study questions. Try to find your own explana
 
 <details>
 <summary>
-1) What's going on in script.js?
+1) What's going on in instances.js?
 </summary>
 
-**Line 1:** The `Animal` class and a number of child classes are imported from `index.js` via `require`. (They are actually imported into _that_ file from their individual sources.)
+**Line 1:** The `Animal` class and a number of child classes are imported from `classes.js` via `require`. (They are actually imported into _that_ file from their individual sources.)
 
 **Lines 2 - 11:** The imported classes are used to create new _instances_ of the various imported classes, and each of these is stored as a variable with the same name as the critter.
 
