@@ -8,11 +8,13 @@ console.log(welcome)
 
 const repl = require('repl')
 const replServer = repl.start({
-    prompt: "JS Barnyard > "
+    // prompt: "JS Barnyard > "
+    prompt: ""
 })
 
 const loadContext = () => {
 
+    console.log(`Loading REPL context...\n`)
     Object.keys(require.cache).forEach(function(key) { delete require.cache[key] })
     
     const classes = require('./classes.js')
@@ -24,7 +26,9 @@ const loadContext = () => {
     for (const [k,v] of Object.entries(instances)) {
         replServer.context[k] = v
     }
+    replServer.setPrompt("JS Barnyard > ")
+    replServer.displayPrompt()
 }
 
 loadContext()
-replServer.context.reload = loadContext
+replServer.defineCommand('reload', loadContext)
