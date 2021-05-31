@@ -1,8 +1,8 @@
 const welcome = 
 `
-Welcome to the JavaScript Barnyard! 
-Please play with the animals. Enjoy the fresh air!
-See README.md or visit https://github.com/jeremyrrose/js-barnyard for directions.
+\x1b[3mWelcome to the \x1b[1;32mJavaScript Barnyard! 
+\x1b[0;34mPlease play with the animals. Enjoy the fresh air!
+\x1b[0mSee README.md or visit https://github.com/jeremyrrose/js-barnyard for directions.
 `
 console.log(welcome)
 
