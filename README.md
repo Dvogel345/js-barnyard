@@ -52,17 +52,16 @@ You can use either method for general JS OOP, but get used to seeing `props` in 
 ## OK, what do I do here?
 
 ### 1. Scope it out
-The files in this repo are designed as modular classes that can be imported into a Node environment. `Animal` is the parent class, and child classes are contained in the `species` directory. Clone this repo and click around in VSCode -- look for at least one example of each concept mentioned above, and try to wrap your head around it.
+The files in this repo are designed as modular classes that can be imported into a Node environment. `Animal` is the parent class, and child classes are contained in the `species` directory. (There is also a list of built-in instances in `instances.js`.) Clone this repo and click around in VSCode -- look for at least one example of each concept mentioned above, and try to wrap your head around it.
 
 ### 2. Fire it up and play in the barnyard
-In your VSCode terminal, start the Node shell by typing `node`. (Make sure you're in the repository directory.) Now let's import some classes and instances from `classes.js` and `instances.js`. Paste these two lines into your running Node shell:
+The best way to play with JS classes is to use the Node REPL, which allows us to enter expressions line by line and see the results. In this repository, `index.js` will start a REPL with all of the classes you see in these files loaded by default. In your terminal, type:
 
 ```bash
-const { Animal, Dog, Cat, Pig, Sheep, Chicken, Bull } = require('./classes.js')
-const { Monique, Spike, Leo, Lawrence, Laura, Sal, Perry, Tina, Pia, Tim, animals } = require('./instances.js')
+node index.js
 ```
 
-Now all of the above variables should be available to you in your Node shell. Type `animals` and you should see all of the current animals listed in an array. Type an animal's name and you should be able to access the individual object. Now do some stuff!
+You should see a list of all the classes exported by `classes.js` and the instances exported by `instances.js`. Now you have animals to play with! Type `animals` and you should see all of the current animal instances listed in an array. Type an individual animal's name and you should be able to access the individual object. Type a class name, and you should see that your REPL recognizes it as a function. Now do some stuff!
 
 * Make a new animal instance of whatever type you like. (Check `instances.js` for hints.)
 * Look at the methods defined for `Animal` and for each subclass. Make the animals do stuff! Wallow! Eat! Charge! Make friends! Try stuff! Can Laura eat `'a paper bag'`? Can Perry charge `'a truck'`? Can Leo fetch `'the paper'`? Can Spike make friends with `'a fence'`? Can Lawrence eat Pia??? Zoiks!
@@ -70,12 +69,16 @@ Now all of the above variables should be available to you in your Node shell. Ty
 * Perry is a very angry bull. Have him try to `charge` everybody by altering the code above.
 * Do whatever! Try to break it.
 
+>You can type `.reload` in the REPL to load any changes you've made to these files without restarting the REPL.
+
 ### 3. Make another child class
 Create a new subclass of `Animal` in a new file in the `species` directory. Make it whatever you like. Give it some special properties or methods or both. Import the file in your Node shell (example: `const Duck = require('./species/Duck)`) and create a new instance of your `Duck` or `Rabbit` or whatever. See if it can eat some stuff and make some friends!
 
+>You can type `.reloadClasses` in the REPL to load changes to your class definitions *only* while preserving the existing animal instances. Watch out: Existing animals will still use the original class definitions!
+
 ## Nice work!
 
-If you're comfortable here, then you know slightly _more_ than you need to know about JS OOP in order to get started with React. Great!
+If you're comfortable here, then you know slightly _more_ than you need to know about JS OOP in order to get started with class-based components in React. Great!
 
 ## For Teachers and Students: Additional Study Questions
 
@@ -92,7 +95,7 @@ To dig in deeper, start with these study questions. Try to find your own explana
 
 **Line 12:** Each of the above instances is placed into a new array. (Note: This will place a _reference_ to the original object in the array. `Monique` and `animals[0]` will now both point to the same object.)
 
-**Line 13:** The individual created instances and the array are _exported_ from this file, meaning other files can access them via `require`.
+**Line 13:** The individual instances and the array are _exported_ from this file, meaning other files can access them via `require`.
 
 </details>
 
