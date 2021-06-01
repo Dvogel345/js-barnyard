@@ -38,7 +38,7 @@ class Animal {
     eat(food) {
         if (this.isHungry()) {
             this.stuffInBelly.push(food)
-            console.log(`${this.name} ate some ${food}. Yum!`)
+            console.log(`${this.name} ate ${food}. Yum!`)
         } else {
             console.log(`${this.name} doesn't feel like eating ${food} right now.`)
         }
