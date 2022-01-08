@@ -1,4 +1,7 @@
 class Animal {
+
+    static allAnimals = []
+    static findName = (str) => this.allAnimals.filter(anim => anim.name.toLowerCase().includes(str.toLowerCase()))
     
     constructor(properties) {
         this.name = properties.name 
@@ -6,6 +9,9 @@ class Animal {
         this.stuffInBelly = Array.isArray(properties.stuffInBelly) ? properties.stuffInBelly : [] // prevents breaking if non-array object passed
         this.position = typeof properties.position == 'number' ? properties.position : 0 // prevents breaking if non-number object passed
         this.friends = []
+
+        // adds this animal to static Animal.allAnimals
+        this.constructor.allAnimals.push(this)
     }
 
     toString() { 
